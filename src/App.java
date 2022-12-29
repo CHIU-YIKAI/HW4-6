@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class App {
 
     public static char lettergrade(int score) {
@@ -17,8 +21,20 @@ public class App {
         return grade;
     }
 
-    // public static void main(String[] args) throws Exception {
-    //     int score = Integer.parseInt((args[0]));
-    //     System.out.println(lettergrade(score));
-    // }
+    public static void main(String[] args) {
+        System.out.print("Enetr the score = ");
+        try {
+            InputStreamReader isr = new InputStreamReader(System.in);
+            BufferedReader br = new BufferedReader(isr);
+            int score = Integer.parseInt(br.readLine());
+            char grade = lettergrade(score);
+            System.out.println("The grade of " + score + " is " + grade);
+        } 
+        catch (NumberFormatException ex) {
+            System.out.println("Not an integer!");
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }           
+    }
 }
